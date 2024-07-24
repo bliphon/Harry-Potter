@@ -1,0 +1,220 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background com Vídeo Responsivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Neo&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Neo', sans-serif;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .book {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .book img {
+            width: 250px;
+            height: 350px;
+            cursor: pointer;
+            filter: grayscale(100%);
+            transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
+        }
+
+        .book img:hover {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 
+                        0 0 30px rgba(0, 255, 255, 0.8), 
+                        0 0 45px rgba(0, 255, 255, 0.8), 
+                        0 0 60px rgba(0, 255, 255, 0.8);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            font-family: 'Neo', sans-serif;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .theme-toggle:hover {
+            background-color: #bbb;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 
+                        0 0 30px rgba(0, 255, 255, 0.8), 
+                        0 0 45px rgba(0, 255, 255, 0.8), 
+                        0 0 60px rgba(0, 255, 255, 0.8);
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            filter: brightness(70%);
+        }
+
+        @media (max-width: 768px) {
+            #bg-video {
+                display: block;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay="" muted="" loop="" id="bg-video">
+            <!-- Vídeo 1 para celular -->
+            <source src="https://i.imgur.com/nkGCXdn.mp4" type="video/mp4" media="(max-width: 768px)">
+            <!-- Vídeo 2 para celular (fallback) -->
+            <source src="https://i.imgur.com/vzHtOAy.mp4" type="video/mp4" media="(max-width: 768px)">
+            <!-- Vídeo 1 para desktop -->
+            <source src="https://i.imgur.com/aEBClPP.mp4" type="video/mp4" media="(min-width: 769px)">
+            <!-- Vídeo 2 para desktop -->
+            <source src="https://i.imgur.com/9FcxhCY.mp4" type="video/mp4" media="(min-width: 769px)">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="content">
+        <div class="book">
+            <a href="https://www.mediafire.com/file/3134o2avkfckpkr/1+A+PEDRA+FILOSOFAL.pdf/file" target="_blank" class="image-link">
+                <img src="https://i.imgur.com/rHlobxL.jpg" alt="Livro 1" style="">
+            </a>
+            <p>Pedra Filosofal</p>
+        </div>
+        <!-- Outros livros -->
+        <div class="book">
+            <a href="https://www.mediafire.com/file/ncaoj7251rpmk34/2_A_C%C3%82MARA_SECRETA.pdf/file" target="_blank" class="image-link">
+                <img src="https://i.imgur.com/B5YfY3R.jpg" alt="Livro 2" style="">
+            </a>
+            <p>Câmara Secreta</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/u5kkc5yfp5ahew3/3_O_PRISIONEIRO_DE_AZKABAN.pdf/file" target="_blank" class="image-link">
+                <img src="https://m.media-amazon.com/images/I/81u+ljPVifL._AC_UF1000,1000_QL80_.jpg" alt="Livro 3" style="">
+            </a>
+            <p>Prisioneiro de Azkaban</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/g3axak60z6hxcm9/4_O_CALICE_DE_FOGO.pdf/file" target="_blank" class="image-link">
+                <img src="https://i.imgur.com/CyYBBiK.jpg" alt="Livro 4" style="">
+            </a>
+            <p>Cálice de Fogo</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/9xtcaawbc1ugpq3/7_A_ORDEM_DA_FENIX.pdf/file" target="_blank" class="image-link">
+                <img src="https://th.bing.com/th/id/OIP.Wx4RT2kmQnlGWzYEw1fuhQHaKp?w=198&amp;h=285&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7" alt="Livro 5">
+            </a>
+            <p>Ordem da Fênix</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/lqrst4at2jb0zr4/8_O_ENIGMA_DO_PRÍNCIPE.pdf/file" target="_blank" class="image-link">
+                <img src="https://lojaleiturinha.vtexassets.com/arquivos/ids/156217/167042907681yfih1yozl.jpg?v=638337702508300000" alt="Livro 6">
+            </a>
+            <p>Enigma do Príncipe</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/ftckzx3zpgf14rv/9_AS_RELÍQUIAS_DA_MORTE.pdf/file" target="_blank" class="image-link">
+                <img src="https://th.bing.com/th/id/OIP.NSpAbHO6CPeUY0TA8d0TVgHaLG?w=198&amp;h=297&amp;c=7&amp;r=0&amp;o=5&amp;pid=1.7" alt="Livro 7">
+            </a>
+            <p>Relíquias da Morte</p>
+        </div>
+        <div class="book">
+            <a href="https://www.mediafire.com/file/f78pvm9isfb9fq3/12_CRIANÇA_AMALDIÇOADA.pdf/file" target="_blank" class="image-link">
+                <img src="https://i.imgur.com/0fPbTmj.jpg" alt="Livro 8">
+            </a>
+            <p>Criança Amaldiçoada</p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const button = document.querySelector('.theme-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                button.style.color = 'black';
+                button.style.background = 'linear-gradient(45deg, #ffffff, #000000)';
+            } else {
+                button.style.color = 'white';
+                button.style.background = 'linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00)';
+            }
+        }
+
+        document.querySelectorAll('.book img').forEach(img => {
+            img.addEventListener('mouseover', () => {
+                img.style.boxShadow = `0 0 15px rgba(${randomRGB()}, 0.8), 
+                                      0 0 30px rgba(${randomRGB()}, 0.8), 
+                                      0 0 45px rgba(${randomRGB()}, 0.8), 
+                                      0 0 60px rgba(${randomRGB()}, 0.8)`;
+            });
+            img.addEventListener('mouseout', () => {
+                img.style.boxShadow = '';
+            });
+        });
+
+        function randomRGB() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `${r}, ${g}, ${b}`;
+        }
+    </script>
+
+
+</body></html>
